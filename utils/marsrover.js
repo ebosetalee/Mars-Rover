@@ -1,35 +1,20 @@
 class MarsRover {
 	constructor(position, direction) {
-		this.position = position;
 		this.direction = direction;
 		this.x = position[0];
 		this.y = position[1];
 	}
 
-	turnLeft(direction) {
-		switch (direction.toUpperCase()) {
-			case "NORTH":
-				return (this.direction = "WEST");
-			case "WEST":
-				return (this.direction = "SOUTH");
-			case "SOUTH":
-				return (this.direction = "EAST");
-			case "EAST":
-				return (this.direction = "NORTH");
-		}
-	}
-
-	turnRight(direction) {
-		switch (direction.toUpperCase()) {
-			case "NORTH":
-				return (this.direction = "EAST");
-			case "EAST":
-				return (this.direction = "SOUTH");
-			case "SOUTH":
-				return (this.direction = "WEST");
-			case "WEST":
-				return (this.direction = "NORTH");
-		}
+	turn(direction) {
+        if (direction === "NORTH"){
+            this.direction = direction === "R" ? "EAST" : "WEST"
+        } else if (direction === "EAST"){
+            this.direction = direction === "R" ? "SOUTH" : "NORTH"
+        } else if (direction === "SOUTH"){
+            this.direction = direction === "R" ? "WEST" : "EAST"
+        }else if (direction === "WEST"){
+            this.direction = direction === "R" ? "NORTH" : "SOUTH"
+        }
 	}
 
 	move(command) {
@@ -45,21 +30,19 @@ class MarsRover {
 			} else if (this.direction === "EAST" || this.direction === "WEST") {
 				this.y -= 1;
 			}
-		} else {
-			return "Wrong command";
 		}
 	}
 
 	translate(commands) {
 		let command = commands.toUpperCase().split(""), x;
 		for (x in command) {
-			if (command[x] === "R") {
-				this.turnRight(this.direction);
-			} else if (command[x] === "L") {
-				this.turnLeft(this.direction);
-			} else {
+			if (command[x] === "R" || command[x] === "L") {
+				this.turn(this.direction);
+			} else if(command[x] === "F" || command[x] === "B") {
 				this.move(command[x]);
-			}
+			} else{
+                return "Wrong commands"
+            }
 		}
 		return `[${this.x}, ${this.y}], ${this.direction}`;
 	}
