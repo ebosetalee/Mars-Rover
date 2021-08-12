@@ -1,0 +1,24 @@
+{
+  "dependencies": {
+    "express": "^4.17.1"
+  },
+  "name": "mars-rover",
+  "description": "Develop an API that translates commands sent from earth to intrustions that are understood by the rover in the moon.",
+  "version": "1.0.0",
+  "main": "index.js",
+  "devDependencies": {},
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ebosetalee/Mars-Rover.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ebosetalee/Mars-Rover/issues"
+  },
+  "homepage": "https://github.com/ebosetalee/Mars-Rover#readme"
+}
